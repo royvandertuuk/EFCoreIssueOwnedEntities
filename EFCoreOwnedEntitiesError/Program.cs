@@ -33,6 +33,9 @@ internal class Program
         using var context2 = new TestDbContext();
         {
             context2.Foos.Add(foo);
+
+            // SaveChanges throws:
+            //System.InvalidOperationException: 'Cannot save instance of 'Foo.BarStatistics#Statistics.Percentile25En75#PercentileRange' because it is an owned entity without any reference to its owner. Owned entities can only be saved as part of an aggregate also including the owner entity.'
             context2.SaveChanges();
         }
     }
